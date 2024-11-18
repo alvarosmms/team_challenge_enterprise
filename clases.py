@@ -71,12 +71,15 @@ class Tablero:
             self.disparos[fila, columna] = IMPACTO
             hundido = self.verificar_hundimiento(fila, columna)
             if hundido:
-                print("¡Barco hundido!")
+                self.marcar_hundido([(fila, columna)])
             self.barcos_restantes -= 1
-            return True, hundido  # Impacto y hundimiento si aplica
-        else:
+            return True, hundido
+        elif self.tablero[fila, columna] == AGUA:
+            self.tablero[fila, columna] = FALLO
             self.disparos[fila, columna] = FALLO
-            return False, False  # Agua y no hundido
+            return False, False
+        else:
+            return False, False  # Si ya disparó a esta casilla
 
     def verificar_hundimiento(self, fila, columna):
         for barco in self.barcos:
@@ -105,3 +108,14 @@ class Tablero:
             print("\n".join(" ".join(row) for row in self.tablero))
         else:
             print("\n".join(" ".join(row) for row in self.disparos))
+
+    def disparo_maquina(self):
+        while True:
+            x, y = random.randint(0, DIMENSIONES_TABLERO - 1), random.randint(0, DIMENSIONES_TABLERO - 1)
+            if self.tablero[x][y] not in ["X", "O"]:  # Si la casilla no está marcada
+                if self.tablero[x][y] == "B":
+                    self.tablero[x][y] = "X"  # Marca de disparo exitoso
+                    return x, y, "Tocado"
+                else:
+                    self.tablero[x][y] = "O"  # Marca de disparo fallido
+                    return x, y, "Agua"

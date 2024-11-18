@@ -19,8 +19,8 @@ BARCOS = {
 }
 
 # Caracteres para representar el tablero
-AGUA = '~'
-BARCO = 'P'
+AGUA = ' '
+BARCO = 'B'
 IMPACTO = '*'
 FALLO = 'X'
 HUNDIDO = '#'
