@@ -19,6 +19,9 @@ def abrir_nueva_ventana():
     medio = tk.Button(ventana_menu, text="Medio", fg="blue" ,command=juego_medio)
     medio.pack(pady=10)
 
+    dificil = tk.Button(ventana_menu, text="Dificil", fg="black" ,command=juego_dificil)
+    medio.pack(pady=10)
+
     imposible = tk.Button(ventana_menu, text="Imposible", fg="red", command=juego_imposible)
     imposible.pack(pady=10)
     ventana_menu.mainloop()
