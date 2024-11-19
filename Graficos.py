@@ -8,7 +8,7 @@ def abrir_nueva_ventana():
     ventana_inicio.destroy()
     ventana_menu = tk.Tk()
     ventana_menu.title("Menú del juego")
-    ventana_menu.geometry("300x250")
+    ventana_menu.geometry("300x300")
 
     etiqueta = tk.Label(ventana_menu, text="Selecciona un modo de juego:", fg="black")
     etiqueta.pack(pady=20)
